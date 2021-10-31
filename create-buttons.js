@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded',
 			reboot.id = `reboot-${deviceID}'`
 			reboot.classList.add(`reboot`)
 			reboot.innerHTML = `Reboot '${deviceName}'`
-			reboot.onclick = () => newRequest(`POST https://a.simplemdm.com/api/v1/devices/${deviceID}/restart`);
+			reboot.onclick = () => newRequest(`https://a.simplemdm.com/api/v1/devices/${deviceID}/restart`);
 
 			return [reboot, lock, unlock]
 		}
@@ -52,3 +52,4 @@ document.addEventListener('DOMContentLoaded',
 
 // newRequest code: https://reqbin.com/hhufgug4
 // Self-hosted proxy: https://cors-anywhere-shiloh.herokuapp.com/
+// js file proxied through: https://combinatronics.com/
