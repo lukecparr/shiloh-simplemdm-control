@@ -11,10 +11,10 @@ let newRequest = (url) => {
 		if (xhr.readyState === 4) {
 			console.log(xhr.status);
 			console.log(xhr.responseText);
+			return xhr.status;
 		}};
 
 	xhr.send();
-	return xhr.status;
 }
 
 
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded',
 			unlock.classList.add(`unlock`)
 			unlock.innerHTML = `Unlock`
 			unlock.onclick = () => {
-				if (newRequest(`https://a.simplemdm.com/api/v1/device_groups/49646/devices/${deviceID}`) == 202) {
+				if (newRequest(`https://a.simplemdm.com/api/v1/device_groups/49646/devices/${deviceID}`) == '202') {
 					setTimeout(() => {
 						unlock.innerHTML = 'Success!'
 					},3000)
