@@ -72,7 +72,7 @@ const createButton = (deviceID, deviceName) => {
 	reboot.innerHTML = `Reboot`
 	reboot.onclick = () => clickHandler(`https://a.simplemdm.com/api/v1/devices/${deviceID}/restart`, reboot);
 
-	return [reboot, lock, unlock]
+	return [unlock, lock, reboot]
 }
 
 document.addEventListener('DOMContentLoaded',
@@ -86,8 +86,13 @@ document.addEventListener('DOMContentLoaded',
 
 			rootElem.insertAdjacentElement('beforebegin', h)
 
+			let btnCont = document.createElement('div')
+			btnCont.classList.add('button-container')
+			
+			h.insertAdjacentElement('afterend', btnCont)
+
 			createButton(station.id, station.name).forEach((button) => {
-				h.insertAdjacentElement('afterend', button)
+				btnCont.insertAdjacentElement('beforeend', button)
 			})
 		})
 	}
