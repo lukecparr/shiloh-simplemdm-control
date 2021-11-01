@@ -5,10 +5,25 @@ const stations = [
 		blockId: 'block-3b6912c2831a46ef9ba1688587ea7403'
 	},
 	{
+		id: '598941',
+		name: 'Check-in (2)',
+		blockId: 'block-8289c722a8624d7e866712c7eb086d63'
+	},
+	{
+		id: '591690',
+		name: 'Check-in (3)',
+		blockId: 'block-4318ac05dc81437885358ea43b928cf6'
+	},
+	{
 		id: '301333',
 		name: 'Check-in (4)',
 		blockId: 'block-1b2d4a8a60354e42b33cd25348b0bad3'
 	},
+	{
+		id: '301333',
+		name: 'connect_center',
+		blockId: 'block-1b2d4a8a60354e42b33cd25348b0bad3'
+	}
 ]
 
 let newRequest = (url) => {
@@ -63,11 +78,17 @@ const createButton = (deviceID, deviceName) => {
 
 document.addEventListener('DOMContentLoaded',
 	() => {
+		const rootElem = document.getElementById('block-4d2d287191324d03ad7773b510a89bfd')
+
 		stations.forEach((station) => {
-			let elem = document.getElementById(station.blockId)
+			let h = document.createElement('h1')
+			h.classList.add('notion-heading')
+			h.innerHTML = station.name
+
+			rootElem.insertAdjacentElement('afterend', h)
 
 			createButton(station.id, station.name).forEach((button) => {
-				elem.insertAdjacentElement('afterend', button)
+				h.insertAdjacentElement('afterend', button)
 			})
 		})
 	}
