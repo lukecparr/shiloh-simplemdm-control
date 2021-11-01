@@ -28,17 +28,11 @@ document.addEventListener('DOMContentLoaded',
 			unlock.classList.add(`unlock`)
 			unlock.innerHTML = `Unlock`
 			unlock.onclick = () => {
-				if (newRequest(`https://a.simplemdm.com/api/v1/device_groups/49646/devices/${deviceID}`) == '202') {
-					setTimeout(() => {
-						unlock.innerHTML = 'Success!'
-					},3000)
-					unlock.innerHTML = `Unlock`
-				} else {
-					setTimeout(() => {
-						unlock.innerHTML = 'Something went wrong. :('
-					},3000)
-					unlock.innerHTML = `Unlock`
-				}
+				newRequest(`https://a.simplemdm.com/api/v1/device_groups/49646/devices/${deviceID}`)
+				setTimeout(() => {
+					unlock.innerHTML = 'Success!'
+				},3000)
+				unlock.innerHTML = `Unlock`
 			};
 
 			const lock = document.createElement('BUTTON')
