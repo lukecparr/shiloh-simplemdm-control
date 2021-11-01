@@ -14,6 +14,7 @@ let newRequest = (url) => {
 		}};
 
 	xhr.send();
+	return xhr.status;
 }
 
 
@@ -25,19 +26,31 @@ document.addEventListener('DOMContentLoaded',
 			const unlock = document.createElement('BUTTON')
 			unlock.id = `unlock-${deviceID}'`
 			unlock.classList.add(`unlock`)
-			unlock.innerHTML = `Unlock '${deviceName}'`
-			unlock.onclick = () => newRequest(`https://a.simplemdm.com/api/v1/device_groups/49646/devices/${deviceID}`);
+			unlock.innerHTML = `Unlock`
+			unlock.onclick = () => {
+				if (newRequest(`https://a.simplemdm.com/api/v1/device_groups/49646/devices/${deviceID}`) == 202) {
+					setTimeout(() => {
+						unlock.innerHTML = 'Success!'
+					},3000)
+					unlock.innerHTML = `Unlock`
+				} else {
+					setTimeout(() => {
+						unlock.innerHTML = 'Something went wrong. :('
+					},3000)
+					unlock.innerHTML = `Unlock`
+				}
+			};
 
 			const lock = document.createElement('BUTTON')
 			lock.id = `lock-${deviceID}'`
 			lock.classList.add(`lock`)
-			lock.innerHTML = `Lock '${deviceName}'`
+			lock.innerHTML = `Lock`
 			lock.onclick = () => newRequest(`https://a.simplemdm.com/api/v1/device_groups/49644/devices/${deviceID}`);
 
 			const reboot = document.createElement('BUTTON')
 			reboot.id = `reboot-${deviceID}'`
 			reboot.classList.add(`reboot`)
-			reboot.innerHTML = `Reboot '${deviceName}'`
+			reboot.innerHTML = `Reboot`
 			reboot.onclick = () => newRequest(`https://a.simplemdm.com/api/v1/devices/${deviceID}/restart`);
 
 			return [reboot, lock, unlock]
@@ -52,4 +65,5 @@ document.addEventListener('DOMContentLoaded',
 
 // newRequest code: https://reqbin.com/hhufgug4
 // Self-hosted proxy: https://cors-anywhere-shiloh.herokuapp.com/
-// js file proxied through: https://combinatronics.com/
+// js file CDN through: https://combinatronics.com/
+// js CDN URL: https://www.combinatronics.com/lukecparr/shiloh-simplemdm-control/main/create-buttons.js
