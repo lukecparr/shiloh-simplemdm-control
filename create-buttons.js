@@ -42,16 +42,13 @@ document.addEventListener('DOMContentLoaded',
 			lock.id = `lock-${deviceID}'`
 			lock.classList.add(`lock`)
 			lock.innerHTML = `Lock`
-			lock.onclick = () => {
-				newRequest(`https://a.simplemdm.com/api/v1/device_groups/49644/devices/${deviceID}`)
-				lock.innerHTML = 'Success!'
-			};
+			lock.onclick = () => {clickHandler(`https://a.simplemdm.com/api/v1/device_groups/49644/devices/${deviceID}`, lock)};
 
 			const reboot = document.createElement('BUTTON')
 			reboot.id = `reboot-${deviceID}'`
 			reboot.classList.add(`reboot`)
 			reboot.innerHTML = `Reboot`
-			reboot.onclick = () => newRequest(`https://a.simplemdm.com/api/v1/devices/${deviceID}/restart`);
+			reboot.onclick = () => clickHandler(`https://a.simplemdm.com/api/v1/devices/${deviceID}/restart`, reboot);
 
 			return [reboot, lock, unlock]
 		}
