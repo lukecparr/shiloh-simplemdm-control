@@ -1,4 +1,4 @@
-const newRequest = (url) => {
+let newRequest = (url) => {
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "https://cors-anywhere-shiloh.herokuapp.com/" + url);
