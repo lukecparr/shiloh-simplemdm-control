@@ -1,0 +1,27 @@
+.button-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  button {
+      width: 8rem;
+      height: 3rem;
+      border-radius: .5rem;
+      color: white;
+      font-size: 1rem;
+      border: 1px solid transparent;
+      margin: 5px;
+  }
+  
+  .unlock {
+      background-color: #157347;
+  }
+  
+  .lock {
+      background-color: #ffc107;
+      color: #37352f;
+  }
+  
+  .reboot {
+      background-color: #dc3535;
+  }
