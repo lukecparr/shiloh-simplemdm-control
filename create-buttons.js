@@ -16,19 +16,23 @@ const stations = [
 		name: 'Check-in (4)',
 	},
 	{
-		id: '301333',
-		name: 'connect_center',
+		id: '687319',
+		name: 'Check-in (5)',
 	},
 	{
 		id: '301349',
-		name: 'life_center',
-	}
+		name: 'Check-in (6)',
+	},
+	{
+		id: '301333',
+		name: 'Connect Center Kiosk',
+	},
 ]
 
-let newRequest = (url) => {
+let newRequest = (method, url) => {
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "https://cors-anywhere-shiloh.herokuapp.com/" + url);
+	xhr.open(method, "https://cors-anywhere-shiloh.herokuapp.com/" + url);
 	
 	xhr.setRequestHeader("Authorization", "Basic Sm51bW1CRkpPWmtmbzI3VU5WSlhiVzNRVUEwd3B6UEdnVUphcTQybkdWeG5razR3eHFJMEdIcFpnWm5Db1M4azog");
 	xhr.setRequestHeader("Content-Type", "application/json");
@@ -45,7 +49,7 @@ let newRequest = (url) => {
 }
 
 const clickHandler = (mdmUrl, element) => {
-	newRequest(mdmUrl)
+	newRequest("POST", mdmUrl)
 	currHTML = element.innerHTML
 	element.innerHTML = 'Success!'
 	setTimeout(() => {
